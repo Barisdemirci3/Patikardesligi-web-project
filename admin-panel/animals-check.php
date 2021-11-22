@@ -1,4 +1,5 @@
 <?php include "sidebar.php";
+//Kabul kısmı
 if(isset($_GET["aggre"])){
   $data = $_GET["aggre"];
   if(is_numeric($data)){
@@ -12,8 +13,11 @@ if(isset($_GET["aggre"])){
 <script>
 alert("Gelen veri sayısal bi değere sahip olmalıdır!");
 </script>
-<?php } } ?>
+<?php } } 
+//Endline
+?>
 <?php 
+//Reddetme kısmı 
   if(isset($_GET["disaggre"])){
     $data2 = $_GET["disaggre"];
     if(is_numeric($data2)){
@@ -27,6 +31,7 @@ alert("Gelen veri sayısal bi değere sahip olmalıdır!");
 </script>
 <?php 
   } }
+  //Endline
   ?>
 
 
