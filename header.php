@@ -1,6 +1,8 @@
 <?php 
 include "connect.php";
+include "functions.php";
 session_start();
+error_reporting(0);
 ob_start();
 ?>
 <head>
@@ -71,19 +73,23 @@ ob_start();
 							<ul class="nav navbar-nav">
 								<?php if($_SESSION["uye_nick"]){
 									 ?>
-								<li><a href="#"><i class="fa fa-user"></i> Hesabım</a></li>
-								<?php }if($_SESSION["uye_nick"]){ ?>
+								<li><a href="hesabim.php"><i class="fa fa-user"></i> Hesabım</a></li>
+								<?php } ?>
+								<?php if($_SESSION["uye_durum"]==1){ ?>
+								<li><a href="admin-panel/index.php"><i class="fas fa-tasks"></i></i>Yönetim Paneli</a></li> 
+								
+								<?php }if($_SESSION["uye_nick"] && $_SESSION["uye_durum"]==0){ ?>
 								<li><a href="add-animal.php"><i class="fas fa-plus"></i> Dostunu ekle!</a></li>
 								<?php } ?>
 								<li><a href="#" style="color:red;"><i class="fa fa-star"></i> Patici ol!</a></li>
 								<li><a href="#"><i class="fas fa-book-open"></i> Yardım</a></li>
-								<li><a href="#"><i class="fas fa-hands-helping"></i> Destek </a></li>
 								<?php if(!$_SESSION["uye_nick"]){
 									?>
 								<li><a href="login.php"><i class="fa fa-lock"></i> Giriş yap/Kayıt ol</a></li>
 								<?php }else{ ?>
 									<li><a href="session_destroy.php"><i class="fas fa-sign-out-alt"></i>Çıkış yap</a></li> 
 									<?php } ?>
+									
 							</ul>
 						</div>
 					</div>
@@ -116,8 +122,15 @@ ob_start();
                                 </li> 
 								<li><a href="#">Üyeler</a>
                                     
+							</li> 
+							<li class="dropdown"><a href="#">Ticket<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="ticket.php">Ticket oluştur</a></li>
+										<li><a href="tickets-list.php">Ticket listesi</a></li> 
+										<li><a href="checkout.html">Kuşlar</a></li> 
+										<li><a href="cart.html">Diğer</a></li> 
+                                    </ul>
                                 </li> 
-						
 								<li><a href="contact-us.php">İletişim</a></li>
 							</ul>
 						</div>

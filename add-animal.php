@@ -2,9 +2,7 @@
 <html lang="en">
 <?php 
 include "header.php";
-if(!$_SESSION["uye_nick"]){
-	header("Location:index.php");
-}
+SessionCheck();
 ?>
 	 
 	 <div id="contact-page" class="container">

@@ -1,8 +1,7 @@
 <?php
 include "connect.php";
-if(!$_GET["id"]){
-header("Location:index.php");
-}
+include "functions.php";
+checkget($_GET["id"],"index.php");
 $dataget = $db->prepare('select * from hayvanlar where hayvan_id=?');
 $dataget->execute([$_GET["id"]]);
 $datawrite = $dataget->fetch(PDO::FETCH_ASSOC);

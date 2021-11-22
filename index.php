@@ -3,7 +3,8 @@
 <?php 
 include "header.php";
 include "connect.php";
-$dataget= $db->query("select * from hayvanlar");
+$dataget= $db->prepare("select * from hayvanlar where ilan_durum=1");
+$dataget->execute();
 ?>
 	
 
@@ -16,7 +17,7 @@ $dataget= $db->query("select * from hayvanlar");
 				<div class="col-sm-10 padding-center">
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">Yeni Eklenen Patiler</h2>
-<?php while($datawrite= $dataget->fetch(PDO::FETCH_ASSOC)){?>
+<?php  while($datawrite= $dataget->fetch(PDO::FETCH_ASSOC)){?>
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
@@ -24,13 +25,13 @@ $dataget= $db->query("select * from hayvanlar");
 											<a href="ilan-bilgileri.php?id=<?= $datawrite["hayvan_id"]; ?>"><img src="images/home/product1.jpg" alt="" /></a>
 											<h2></h2>
 											<p style="text-align: center;"><b><?= $datawrite["hayvan_ilan_baslik"]; ?></b></p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fas fa-paw"></i><?= $datawrite["hayvan_isim"]; ?></a>
+											<a href="ilan-bilgileri.php?id=<?= $datawrite["hayvan_id"]; ?>" class="btn btn-default add-to-cart"><i class="fas fa-paw"></i><?= $datawrite["hayvan_isim"]; ?></a>
 										</div>
 										
 								</div>
 							</div>
 						</div>
-						<?php } ?>
+						<?php }  ?>
 
 						
 					</div><!--features_items-->
@@ -47,45 +48,7 @@ $dataget= $db->query("select * from hayvanlar");
 						</div>
 						<div class="tab-content">
 							<div class="tab-pane fade active in" id="tshirt" >
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/home/gallery1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/home/gallery2.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/home/gallery3.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
+								<!-- ilan kısmı -->
 								<div class="col-sm-3">
 									<div class="product-image-wrapper">
 										<div class="single-products">
@@ -95,7 +58,7 @@ $dataget= $db->query("select * from hayvanlar");
 												<p>Easy Polo Black Edition</p>
 												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 											</div>
-											
+										<!-- ilan bitiş -->
 										</div>
 									</div>
 								</div>
@@ -324,91 +287,29 @@ $dataget= $db->query("select * from hayvanlar");
 					</div><!--/category-tab-->
 					
 					<div class="recommended_items"><!--recommended_items-->
-						<h2 class="title text-center">recommended items</h2>
+						<h2 class="title text-center">Önerilen yardım ilanları</h2>
 						
 						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
 								<div class="item active">	
+									<?php $vericek = $db->query("SELECT * FROM hayvanlar"); 
+									while($veriyaz = $vericek->fetch(PDO::FETCH_ASSOC)){
+									?>
 									<div class="col-sm-4">
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
 													<img src="images/home/recommend1.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+													<h2><?= $veriyaz["hayvan_ilan_baslik"]; ?></h2>
+													<p> <b> Hayvan ismi:</b></p>
+													<p><?= $veriyaz["hayvan_isim"];  ?></p>
+													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Yardım et</a>
 												</div>
-												
 											</div>
 										</div>
 									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/home/recommend2.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/home/recommend3.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="item">	
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/home/recommend1.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/home/recommend2.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/home/recommend3.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
+									<?php } ?>
+									
 								</div>
 							</div>
 							 <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
