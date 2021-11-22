@@ -72,8 +72,9 @@ if(isset($_POST["animalname"])){
 if(isset($_POST["ticket_subj"])){
     session_start();
     $ticket_data=[post("ticket_subj"),post("ticket_message"),$_SESSION["id"]];
-    $insert_ticket_data=$db->prepare("INSERT INTO ticket SET ticket_atan=?,ticket_konu=?,ticket_icerik=?,ticket_durum=0,ticket_tarih=0,ticket_cevap=''");
-    $insert_ticket_data->execute([$ticket_data[2],$ticket_data[0],$ticket_data[1]]);
+    $tarih = date("d-m-Y H:i:s"); 
+    $insert_ticket_data=$db->prepare("INSERT INTO ticket SET ticket_atan=?,ticket_konu=?,ticket_icerik=?,ticket_durum=0,ticket_tarih=?,ticket_cevap=''");
+    $insert_ticket_data->execute([$ticket_data[2],$ticket_data[0],$ticket_data[1],$tarih]);
     $array["basarili"]="Başarılı bir şekilde ticketiniz oluşturuldu! Ana sayfaya yönlendiriliyorsunuz.";
     echo json_encode($array);
 }if(isset($_POST["oldpass"])){

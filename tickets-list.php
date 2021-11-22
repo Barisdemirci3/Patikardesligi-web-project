@@ -22,7 +22,7 @@ $getdata = $db->query("SELECT * FROM ticket where ticket_atan=$member_id");
                         <th scope="col">Tıcket ID</th>
                         <th scope="col">Ticket Konu</th>
                         <th scope="col">Ticket durum</th>
-                        <th scope="col">Ticket tarih</th>
+                        <th scope="col">Ticket oluşturma tarihi</th>
                         <th scope="col">Etkileşimler</th>
                     </tr>
                 </thead>
@@ -40,7 +40,7 @@ $getdata = $db->query("SELECT * FROM ticket where ticket_atan=$member_id");
          ?> <td><span class="badge" style="background-color: #F1C306;">Cevap verildi, yanıt bekleniyor</span></td> <?php
           break; case 2:?> <td><span class="badge" style="background-color: green;">Ticket sonuçlandı</span></td>
                         <?php break; }?>
-                        <td>Deneme</td>
+                        <td><?= $writedata["ticket_tarih"]; ?></td>
                         <td><button type="button" class="btn btn-info btn-sm" title="Ticket'i incele"><i
                                     class="far fa-edit"></i></button></td>
                     </tr>
