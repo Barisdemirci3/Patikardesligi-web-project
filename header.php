@@ -127,8 +127,6 @@ ob_start();
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="ticket.php">Ticket oluştur</a></li>
 										<li><a href="tickets-list.php">Ticket listesi</a></li> 
-										<li><a href="checkout.html">Kuşlar</a></li> 
-										<li><a href="cart.html">Diğer</a></li> 
                                     </ul>
                                 </li> 
 								<li><a href="contact-us.php">İletişim</a></li>
