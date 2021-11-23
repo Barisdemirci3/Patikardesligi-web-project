@@ -206,4 +206,7 @@ function ticket_send() {
             });
         }
     }
+    function responseticket() {
+        
+      }
       
