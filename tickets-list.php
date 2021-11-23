@@ -27,7 +27,11 @@ $getdata = $db->query("SELECT * FROM ticket where ticket_atan=$member_id");
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while($writedata=$getdata->fetch(PDO::FETCH_ASSOC)){ ?>
+                    <?php
+                    if($getdata->rowCount()==0){
+                        echo "Ticketiniz bulunmamaktadır!";
+                    }
+                    while($writedata=$getdata->fetch(PDO::FETCH_ASSOC)){ ?>
                     <tr>
                         <th scope="row"><?= $writedata["ticket_id"];?></th>
                         <td><?= $writedata["ticket_konu"];?></td>
@@ -41,8 +45,8 @@ $getdata = $db->query("SELECT * FROM ticket where ticket_atan=$member_id");
           break; case 2:?> <td><span class="badge" style="background-color: green;">Ticket sonuçlandı</span></td>
                         <?php break; }?>
                         <td><?= $writedata["ticket_tarih"]; ?></td>
-                        <td><button type="button" class="btn btn-info btn-sm" title="Ticket'i incele"><i
-                                    class="far fa-edit"></i></button></td>
+                        <td><a href="ticket-response.php?ticket-id=<?= $writedata["ticket_id"]; ?>"><button type="button" class="btn btn-info btn-sm" title="Ticket'i incele"><i
+                                    class="far fa-edit"></i></button></a></td>
                     </tr>
                     <?php } ?>
 
