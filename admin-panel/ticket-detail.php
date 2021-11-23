@@ -43,8 +43,8 @@ $user_write=$get_user_data->fetch(PDO::FETCH_ASSOC);
                         placeholder="Enter email">
                     </div>
                     <div class="form-group">
-                    <label for="exampleInputEmail1">Ticket gönderen kişinin isimi</label>
-                      <input type="email" disabled value="<?= $user_write["uye_isim"]; ?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    <label for="exampleInputEmail1">Ticket gönderen kişinin kullanıcı adı</label>
+                      <input type="email" disabled value="<?= $user_write["uye_nick"]; ?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                         placeholder="Enter email">
                     </div>
                     <div class="form-group">
