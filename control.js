@@ -207,6 +207,11 @@ function ticket_send() {
         }
     }
     function responseticket() {
-        
+        let data= $("#ticketmessage").val().trim();
+        if(data==""){
+            toastr.warning("Yanıt alanını boş bırakamazsınız!", "Uyarı");
+        }else{
+            
+        }
       }
       
