@@ -55,11 +55,12 @@ if($writedata["ticket_atan"]==$member_id){
                     <textarea name="message" id="ticketmessage" required="required" placeholder="Yanıt verin!" ;
                         class="form-control" rows="8"></textarea>
                 </div>
-                <?php } ?>
+                
                 <div class="form-group col-md-12">
                     <input type="submit" name="submit" class="btn btn-primary pull-right" onclick="responseticket();"
                         value="Yanıtla">
                 </div>
+                <?php } ?>
             </form>
         </div>
 
